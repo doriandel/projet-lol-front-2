@@ -1,7 +1,5 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { Route, Navigate, useNavigate } from "react-router-dom";
-import SummonerInfo from "../../Pages/SummonerInfo/SummonerInfo";
+import { useNavigate } from "react-router-dom";
 
 function Input() {
     const [summonerNameInput, setSummonerNameInput] = useState("");
