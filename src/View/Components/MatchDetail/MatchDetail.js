@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./matchDetail.css";
 
 function MatchDetail(props) {
     const { match, summoner } = props;
-    const [matchDetail, setMatchDetail] = useState(null);
 
     const [summonerResearch, setSummonerResearch] = useState(null);
     const [participant, setParticipant] = useState(null);
@@ -38,8 +38,8 @@ function MatchDetail(props) {
     // console.log("summonerResearch : ", summonerResearch);
     // console.log("participant : ", participant);
     // console.log("teams : ", teams);
-    console.log("team1 : ", team1);
-    console.log("team2 : ", team2);
+    // console.log("team1 : ", team1);
+    // console.log("team2 : ", team2);
     // console.log("playerItems : ", playerItems);
     // console.log("itemsValue : ", itemsValue);
 
@@ -51,7 +51,6 @@ function MatchDetail(props) {
         axios
             .get(`http://localhost:8000/api/getMatchDetail/${match}`)
             .then((response) => {
-                setMatchDetail(response.data.matchesList.info);
                 setParticipant(response.data.matchesList.info.participants);
                 setPlayerItems([
                     response.data.matchesList.info.participants[0].item0,
@@ -62,9 +61,8 @@ function MatchDetail(props) {
                     response.data.matchesList.info.participants[0].item5,
                     response.data.matchesList.info.participants[0].item6,
                 ]);
-                //
                 response.data.matchesList.info.participants.map((sumDetail) => {
-                    if (sumDetail.summonerName === summoner) {
+                    if (sumDetail.summonerName.toLowerCase() === summoner.toLowerCase()) {
                         setSummonerResearch(sumDetail);
                     }
                 });
@@ -74,18 +72,21 @@ function MatchDetail(props) {
     useEffect(() => {
         if (participant !== null) {
             participant.map((summoner) => {
-                if (summoner.teamId === 100 && (team1.length < 5)) {
-                    setTeam1((team1) => [...team1, [summoner.summonerName, summoner.championName]]);
-                    console.log("team1");
+                if (summoner.teamId === 100 && team1.length < 5) {
+                    setTeam1((team1) => [
+                        ...team1,
+                        [summoner.summonerName, summoner.championName, summoner.participantId],
+                    ]);
                 }
-                if (summoner.teamId === 200 && (team1.length < 5)) {
-                    setTeam2((team2) => [...team2, [summoner.summonerName, summoner.championName]]);
-                    console.log(summoner);
+                if (summoner.teamId === 200 && team1.length < 5) {
+                    setTeam2((team2) => [
+                        ...team2,
+                        [summoner.summonerName, summoner.championName, summoner.participantId],
+                    ]);
                 }
             });
         }
     }, [participant]);
-
 
     /*******************************************************************
                                 FONCTION RENDER 
@@ -95,8 +96,9 @@ function MatchDetail(props) {
         if (summonerResearch !== null) {
             return (
                 <li key={match} className="flex items-stretch w-1/2 py-3 px-2 ">
-                    <a
-                        href={`/matchtimeline/${match}`}
+                    <Link
+                        to={`/matchtimeline/${match}`}
+                        state={{team1: team1, team2: team2}}
                         className={
                             "block " +
                             (summonerResearch.win
@@ -185,11 +187,10 @@ function MatchDetail(props) {
                                 <div className="flex-col space-y-2">
                                     {team1.map((player, i) => (
                                         <div
-                                        className="flex space-x-1 items-center"
-                                        key={i}
+                                            className="flex space-x-1 items-center"
+                                            key={i}
                                         >
                                             <div className="flex-shrink-0">
-                                            {console.log("player",player)}
                                                 <img
                                                     className="h-4 w-4 rounded-md"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${player[1]}.png`}
@@ -204,30 +205,34 @@ function MatchDetail(props) {
                                 </div>
                             </div>
                             <div className="flex-col space-y-2">
-                            {team2.map((player, i) => (
-                                <div
-                                    className="flex space-x-1 items-center"
-                                    key={i}
-                                >
-                                    <div className="flex-shrink-0">
-                                        <img
-                                            className="h-4 w-4 rounded-md"
-                                            src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${player[1]}.png`}
-                                            alt=""
-                                        />
+                                {team2.map((player, i) => (
+                                    <div
+                                        className="flex space-x-1 items-center"
+                                        key={i}
+                                    >
+                                        <div className="flex-shrink-0">
+                                            <img
+                                                className="h-4 w-4 rounded-md"
+                                                src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${player[1]}.png`}
+                                                alt=""
+                                            />
+                                        </div>
+                                        <p className="text-xs text-gray-50">
+                                            {player[0]}
+                                        </p>
                                     </div>
-                                    <p className="text-xs text-gray-50">
-                                        {player[0]}
-                                    </p>
-                                </div>
-                            ))}
+                                ))}
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 </li>
             );
         } else {
-            return <div className="flex text-[24px] text-blue-800 font-bold w-1/2 h-[160px] justify-center items-center border-4 border-red-800 rounded-[20px]">Chargement ...</div>;
+            return (
+                <div className="flex text-[24px] text-blue-800 font-bold w-1/2 h-[160px] justify-center items-center border-4 border-red-800 rounded-[20px]">
+                    Chargement ...
+                </div>
+            );
         }
     }
     /*******************************************************************

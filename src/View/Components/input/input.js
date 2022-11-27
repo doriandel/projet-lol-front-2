@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./input.css";
 
 function Input() {
     const [summonerNameInput, setSummonerNameInput] = useState("");

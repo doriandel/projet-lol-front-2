@@ -1,6 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
-import MatchDetail from "../../Components/MatchDetail/MatchDetail";
+import MatchDetail from "../MatchDetail/MatchDetail";
 
 function ListMatch(props) {
     const { matchList } = props;

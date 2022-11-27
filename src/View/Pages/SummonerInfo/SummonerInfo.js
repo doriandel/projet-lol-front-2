@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import "./SummonerInfo.css";
 import { useParams } from "react-router-dom";
+
 import PlayerInfo from "../../Components/playerInfo/PlayerInfo";
 import MatchDetail from "../../Components/MatchDetail/MatchDetail";
 
@@ -43,7 +45,6 @@ function SummonerInfo() {
     return (
         <div className="flex flex-col gap-0 bg-cyan-700 h-screen w-screen ">
             <PlayerInfo summonerDetails={summonerDetail} />
-            {/* <ListMatch matchList={matchList} /> */}
             <div className="flex flex-wrap w-full justify-between">
                 <h2 className="flex justify-center w-full items-center text-4xl text-yellow-100 bg-sky-800 p-4 rounded-[25px] border-4 border-red-700">
                     Liste des 10 derniers match :

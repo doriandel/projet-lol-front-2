@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import "./playerInfo.css";
 
 function PlayerInfo(props) {
     const { summonerDetails } = props;
