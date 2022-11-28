@@ -15,15 +15,17 @@ function MatchTimeline() {
     const [matchTimeline, setMatchTimeline] = useState(null);
     const [participants, setParticipants] = useState(null);
     const [frames, setFrames] = useState(null);
+    const [timeEnd, setTimeEnd] = useState(null);
 
     /*******************************************************************
                                LOG OF STATE
         ****************************************************************/
 
     // console.log("matchId", matchId);
-    // console.log("matchTimeline", matchTimeline);
+    console.log("matchTimeline", matchTimeline);
     // console.log("team1", team1);
     // console.log("team2", team2);
+    console.log("timeEnd", timeEnd);
 
     /*******************************************************************
                                 USEEFFECT 
@@ -43,6 +45,7 @@ function MatchTimeline() {
                 setMatchTimeline(response.data.timelineMatch.info.frames);
                 setParticipants(response.data.timelineMatch.info.participants);
                 setFrames(response.data.timelineMatch.info.frames);
+                setTimeEnd(response.data.timelineMatch.info.frames[16].timestamp);
             });
     }, [matchId]);
 
@@ -50,7 +53,7 @@ function MatchTimeline() {
     useEffect(() => {
         if (participants !== null) {
             participants.map((participant) => {
-                console.log(participant);
+                // console.log(participant);
             });
         }
     }, [matchTimeline]);
@@ -61,7 +64,7 @@ function MatchTimeline() {
     return (
         <div>
             <div className="flex flex-row h-screen w-full bg-rose-900">
-                <Map height={750} width={750} />
+                <Map height={750} width={750} gameTime={timeEnd} />
                 <div className="flex flex-col w-full">
                     <Team team1={team1} team2={team2} />
                     <StatMatch frames={frames} />

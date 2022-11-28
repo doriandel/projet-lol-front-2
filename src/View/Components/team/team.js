@@ -6,7 +6,7 @@ function team(props) {
 
     return (
         <div className="flex flex-row w-full">
-            <div className="flex flex-col w-full h-[200px] px-2 border-2 border-amber-400">
+            <div className="flex flex-col w-full h-[200px] px-2 border-2 border-amber-400 m-1 bg-red-800">
                 <h2 className="text-center font-bold text-2xl text-amber-400">Team 1 :</h2>
                 <ol className="flex-col">
                 {team1 !== null ? (
@@ -34,8 +34,8 @@ function team(props) {
                     )}
                 </ol>
             </div>
-            <div className="flex flex-col w-full h-[200px] border-2 border-blue-300">
-                <h2 className="text-center font-bold text-2xl text-blue-300">Team 2 :</h2>
+            <div className="flex flex-col w-full h-[200px] border-2 border-amber-400 m-1 bg-blue-800">
+                <h2 className="text-center font-bold text-2xl text-amber-400">Team 2 :</h2>
                 <ol className="flex-col">
                     {team2 !== null ? (
                         team2.map((participant) => {
