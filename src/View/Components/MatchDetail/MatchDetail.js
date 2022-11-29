@@ -95,25 +95,20 @@ function MatchDetail(props) {
     function renderMatches() {
         if (summonerResearch !== null) {
             return (
-                <li key={match} className="flex items-stretch w-1/2 py-3 px-2 ">
+                <li key={match} className="flex items-stretch w-full mb-1 last:mb-0">
                     <Link
                         to={`/matchtimeline/${match}`}
                         state={{team1: team1, team2: team2}}
                         className={
                             "block " +
                             (summonerResearch.win
-                                ? "bg-blue-900 hover:bg-blue-800 border-red-800 border-4 rounded-[10px] w-full"
-                                : "bg-red-900 hover:bg-red-800 border-blue-800 border-4 rounded-[10px] w-full")
+                                ? "bg-blue-600/50 hover:bg-blue-800 border-red-800 w-full"
+                                : "bg-red-600/50 hover:bg-red-800 border-blue-800 w-full")
                         }
                     >
                         <div className="flex items-center px-4 py-4 sm:px-6 justify-between">
-                            <div className="flex space-x-8 items-center">
+                            <div className="container-items flex space-x-8 items-center">
                                 <div className="flex space-x-5 items-center">
-                                    <div>
-                                        <p className="truncate text-sm font-medium text-gray-50">
-                                            {summonerResearch.championName}
-                                        </p>
-                                    </div>
                                     <div className="flex-shrink-0 ">
                                         <img
                                             className="h-16 w-16 rounded-full"
@@ -128,7 +123,12 @@ function MatchDetail(props) {
                                             alt=""
                                         />
                                     </div>
-                                    <div className="flex-col space-y-1">
+                                    <div>
+                                        <p className="truncate text-sm font-medium text-gray-50 w-24">
+                                            {summonerResearch.championName}
+                                        </p>
+                                    </div>
+                                    <div className="flex-col space-y-1 pl-16">
                                         <div className="flex-shrink-0">
                                             <img
                                                 className="h-7 w-7 rounded-md"
@@ -183,9 +183,30 @@ function MatchDetail(props) {
                                     {summonerResearch.assists}
                                 </p>
                             </div>
-                            <div className="flex gap-4">
-                                <div className="flex-col space-y-2">
-                                    {team1.map((player, i) => (
+                            <div className="container-teams flex w-84 justify-between">
+                                <div className="flex gap-4 w-40">
+                                    <div className="flex-col space-y-2">
+                                        {team1.map((player, i) => (
+                                            <div
+                                                className="flex space-x-1 items-center"
+                                                key={i}
+                                            >
+                                                <div className="flex-shrink-0">
+                                                    <img
+                                                        className="h-4 w-4 rounded-md"
+                                                        src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${player[1]}.png`}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <p className="text-xs text-gray-50">
+                                                    {player[0]}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="flex-col space-y-2 w-40">
+                                    {team2.map((player, i) => (
                                         <div
                                             className="flex space-x-1 items-center"
                                             key={i}
@@ -203,25 +224,6 @@ function MatchDetail(props) {
                                         </div>
                                     ))}
                                 </div>
-                            </div>
-                            <div className="flex-col space-y-2">
-                                {team2.map((player, i) => (
-                                    <div
-                                        className="flex space-x-1 items-center"
-                                        key={i}
-                                    >
-                                        <div className="flex-shrink-0">
-                                            <img
-                                                className="h-4 w-4 rounded-md"
-                                                src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${player[1]}.png`}
-                                                alt=""
-                                            />
-                                        </div>
-                                        <p className="text-xs text-gray-50">
-                                            {player[0]}
-                                        </p>
-                                    </div>
-                                ))}
                             </div>
                         </div>
                     </Link>

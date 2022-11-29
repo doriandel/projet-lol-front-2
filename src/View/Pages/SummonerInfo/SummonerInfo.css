@@ -1,0 +1,17 @@
+.container-summoner{
+    background-color: #1e293b;
+    height: 100%;
+    width: 100%;
+  }
+.container-sort h3:nth-child(1){
+    margin-right: 170px;
+}
+
+.container-sort h3:nth-child(2){
+    margin-right: 555px;
+}
+.container-sort h3:nth-child(3)
+{
+    margin-right: 505px;
+}
+  

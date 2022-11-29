@@ -19,39 +19,44 @@ function PlayerInfo(props) {
     function renderPlayerInfo() {
         if (sumDetails !== null) {
             return (
-                <div className="flex">
+                <div className="flex flex-col p-6">
+                    <div className="container-crb flex items-center gap-2 pb-8">
+                        <a className="btn bg-gray-900 h-10 w-10 rounded-lg flex justify-center" href="/">
+                            <img class="w-[12px]" src="/icon.svg" alt="" />
+                        </a>
+                        <a className="link-1 text-xl font-bold text-gray-500" href="/">Summoner selection</a>
+                        <div className="sep text-xl font-bold text-gray-500">/</div>
+                        <a className="link-1 text-xl font-bold text-gray-200" href="">Match list</a>
+                    </div>
                     {/* avatar du joeur et son niveau : */}
-                    <div className="flex h-[200px] w-1/6 items-center justify-center">
-                        <div className="relative p-0 m-4 flex flex-wrap w-32 h-32 content-center shrink-0">
-                            <img
-                                className="relative rounded-[20px] border-4 border-red-600 "
-                                src={`http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/${sumDetails.profileIconId}.png`}
-                                alt="profileIcon"
-                            />
-                            <p className="absolute bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 bg-slate-100 rounded-md px-1 m-0 border-2 border-amber-400">
-                                <b className="text-red-500">
-                                    {sumDetails.summonerLevel}
-                                </b>
+                    <div className="flex">
+                        <div className="flex items-center justify-center">
+                            <div className="relative p-0 flex w-32 h-32 content-center shrink-0">
+                                <img
+                                    className="relative rounded-[20px]"
+                                    src={`http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/${sumDetails.profileIconId}.png`}
+                                    alt="profileIcon"
+                                />
+                                <p className="absolute bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 bg-blue-600 rounded-md px-2 m-0">
+                                    <p className="text-white">
+                                        {sumDetails.summonerLevel}
+                                    </p>
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* information du joueur : */}
+                        <div className="pl-4 w-full">
+                            <h2 className="flex flex-col w-full text-2xl text-gray-200 pb-2">
+                                {sumDetails.name}
+                            </h2>
+                            <p className="flex flex-col w-full text-gray-200 pb-2">
+                                <b className="mr-2 text-gray-500">AccountID</b> {sumDetails.accountId}
+                            </p>
+                            <p className="flex flex-col w-full text-gray-200">
+                                <b className="mr-2 text-gray-500">PUUID</b> {sumDetails.puuid}
                             </p>
                         </div>
-                    </div>
-
-                    {/* information du joueur : */}
-                    <div className="flex flex-col h-[200px] columns-2 w-5/6 items-center justify-around p-4">
-                        <h2 className="flex w-full bg-red-800 text-amber-400 p-[3px] rounded-[10px] border-2 border-amber-400">
-                            <b className="mr-2 text-cyan-600">Nom : </b> {sumDetails.name}
-                        </h2>
-                        <p className="flex w-full bg-red-800 text-amber-400 p-[3px] rounded-[10px] border-2 border-amber-400">
-                            <b className="mr-2 text-cyan-600">Date de mise a jour : </b>
-                            {revisionDate}
-                        </p>
-
-                        <h2 className="flex w-full bg-red-800 text-amber-400 p-[3px] rounded-[10px] border-2 border-amber-400">
-                            <b className="mr-2 text-cyan-600">AccountId : </b> {sumDetails.accountId}
-                        </h2>
-                        <p className="flex w-full bg-red-800 text-amber-400 p-[3px] rounded-[10px] border-2 border-amber-400">
-                            <b className="mr-2 text-cyan-600">Puuid : </b> {sumDetails.puuid}
-                        </p>
                     </div>
                 </div>
             );
