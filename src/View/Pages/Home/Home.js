@@ -3,15 +3,13 @@ import { React } from "react";
 import "./Home.css";
 
 function Home() {
-    
-    /*******************************************************************
+  /*******************************************************************
                                 RENDER
         ****************************************************************/
-        return (
-            <div className="bgfullscreen flex flex-col justify-end items-center h-screen">
-                <Input />
-            </div>
-        );
-    
+  return (
+    <div className="bgfullscreen flex flex-col justify-center items-center h-screen">
+      <Input />
+    </div>
+  );
 }
 export default Home;

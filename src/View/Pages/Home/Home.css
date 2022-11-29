@@ -1,10 +1,5 @@
 .bgfullscreen {
-    background: url(/src/Asset/bg_lol.jpg) no-repeat center center fixed;
-    background-size: cover;
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
+  background-color: #1e293b;
+  height: 100vh;
+  width: 100vw;
+}
