@@ -49,11 +49,15 @@ function SummonerInfo() {
                 <h2 className="text-2xl font-bold text-gray-200 py-4 w-full">
                     {summonerName}'s Matches
                 </h2>
-                <div className="container-sort w-full flex px-5 py-4 bg-gray-900 rounded-t-xl">
-                    <h3 class="text-xl font-bold text-gray-500">Champion</h3>
-                    <h3 class="text-xl font-bold text-gray-500">Summoner spells & items</h3>
-                    <h3 class="text-xl font-bold text-gray-500">KDA</h3>
-                    <h3 class="text-xl font-bold text-gray-500">Teams</h3>
+                <div className="container-sort w-full flex justify-between px-5 py-4 bg-gray-900 rounded-t-xl">
+                    <div className="champs">
+                        <h3 className="text-xl font-bold text-gray-500">Champion</h3>
+                        <h3 className="text-xl font-bold text-gray-500">Summoner spells & items</h3>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-500">KDA</h3>
+                    <div className="champs">
+                        <h3 className="text-xl font-bold text-gray-500">Teams</h3>
+                    </div>
                 </div>
                 <div className="container-matches w-full">
                     {matchList !== null ? (

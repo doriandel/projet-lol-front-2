@@ -1,3 +1,27 @@
-.container-items{
-    width: 600px;
+@media screen and (min-width: 1600px) {
+    .container-items{
+        width: 600px;
+    }
+}
+  
+@media screen and (min-width: 1024px) and (max-width: 1600px) {
+    .container-items{
+        width: 600px;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1024px) {
+    .summoner-spells,
+    .summoner-items,
+    .container-teams{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .summoner-spells,
+    .summoner-items,
+    .container-teams{
+        display: none;
+    }
 }

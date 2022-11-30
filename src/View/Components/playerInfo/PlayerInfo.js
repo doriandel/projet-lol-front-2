@@ -21,12 +21,12 @@ function PlayerInfo(props) {
             return (
                 <div className="flex flex-col p-6">
                     <div className="container-crb flex items-center gap-2 pb-8">
-                        <a className="btn bg-gray-900 h-10 w-10 rounded-lg flex justify-center" href="/">
+                        <a className="btn bg-gray-900 rounded-lg flex justify-center" href="/">
                             <img class="w-[12px]" src="/icon.svg" alt="" />
                         </a>
-                        <a className="link-1 text-xl font-bold text-gray-500" href="/">Summoner selection</a>
-                        <div className="sep text-xl font-bold text-gray-500">/</div>
-                        <a className="link-1 text-xl font-bold text-gray-200" href="">Match list</a>
+                        <a className="link-1 xl:text-xl lg:text-lg font-bold text-gray-500" href="/">Summoner selection</a>
+                        <div className="sep xl:text-xl lg:text-lg font-bold text-gray-500">/</div>
+                        <a className="link-1 xl:text-xl lg:text-lg font-bold text-gray-200" href="">Match list</a>
                     </div>
                     {/* avatar du joeur et son niveau : */}
                     <div className="flex">
@@ -46,7 +46,7 @@ function PlayerInfo(props) {
                         </div>
 
                         {/* information du joueur : */}
-                        <div className="pl-4 w-full">
+                        <div className="container-infos pl-4 w-full">
                             <h2 className="flex flex-col w-full text-2xl text-gray-200 pb-2">
                                 {sumDetails.name}
                             </h2>

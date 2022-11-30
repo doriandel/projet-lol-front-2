@@ -109,7 +109,7 @@ function MatchDetail(props) {
                         <div className="flex items-center px-4 py-4 sm:px-6 justify-between">
                             <div className="container-items flex space-x-8 items-center">
                                 <div className="flex space-x-5 items-center">
-                                    <div className="flex-shrink-0 ">
+                                    <div className="flex-shrink-0">
                                         <img
                                             className="h-16 w-16 rounded-full"
                                             src={`https://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/${
@@ -128,7 +128,7 @@ function MatchDetail(props) {
                                             {summonerResearch.championName}
                                         </p>
                                     </div>
-                                    <div className="flex-col space-y-1 pl-16">
+                                    <div className="summoner-spells flex-col space-y-1 pl-16">
                                         <div className="flex-shrink-0">
                                             <img
                                                 className="h-7 w-7 rounded-md"
@@ -155,7 +155,7 @@ function MatchDetail(props) {
                                         </div>
                                     </div>
                                 </div>
-                                <ul className="flex space-x-1">
+                                <ul className="summoner-items flex space-x-1">
                                     {playerItems.map((item, key) => {
                                         if (item !== 0) {
                                             return (
@@ -175,7 +175,7 @@ function MatchDetail(props) {
                                 </ul>
                             </div>
                             <div>
-                                <p className="text-2xl text-gray-300 font-bold">
+                                <p className="xl:text-xl lg:text-lg text-gray-300 font-bold">
                                     {summonerResearch.kills}{" "}
                                     <span className="text-gray-600">/</span>{" "}
                                     {summonerResearch.deaths}{" "}
