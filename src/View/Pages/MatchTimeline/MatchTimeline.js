@@ -22,10 +22,10 @@ function MatchTimeline() {
         ****************************************************************/
 
     // console.log("matchId", matchId);
-    console.log("matchTimeline", matchTimeline);
+    // console.log("matchTimeline", matchTimeline);
     // console.log("team1", team1);
     // console.log("team2", team2);
-    console.log("timeEnd", timeEnd);
+    // console.log("timeEnd", timeEnd);
 
     /*******************************************************************
                                 USEEFFECT 
@@ -45,7 +45,7 @@ function MatchTimeline() {
                 setMatchTimeline(response.data.timelineMatch.info.frames);
                 setParticipants(response.data.timelineMatch.info.participants);
                 setFrames(response.data.timelineMatch.info.frames);
-                setTimeEnd(response.data.timelineMatch.info.frames[16].timestamp);
+                setTimeEnd(response.data.timelineMatch.info.frames[response.data.timelineMatch.info.frames.length -1].timestamp);
             });
     }, [matchId]);
 
@@ -63,11 +63,14 @@ function MatchTimeline() {
         ****************************************************************/
     return (
         <div>
-            <div className="flex flex-row h-screen w-full bg-rose-900">
+            <div className="flex flex-row h-screen w-full bg-[#1E293B]">
                 <Map height={750} width={750} gameTime={timeEnd} />
                 <div className="flex flex-col w-full">
                     <Team team1={team1} team2={team2} />
-                    <StatMatch frames={frames} />
+                    <ul>
+                        <StatMatch frames={frames} team1={team1} team2={team2} />
+                    </ul>
+                    
                 </div>
             </div>
         </div>

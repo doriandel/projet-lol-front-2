@@ -52,18 +52,21 @@ function MatchDetail(props) {
             .get(`http://localhost:8000/api/getMatchDetail/${match}`)
             .then((response) => {
                 setParticipant(response.data.matchesList.info.participants);
-                setPlayerItems([
-                    response.data.matchesList.info.participants[0].item0,
-                    response.data.matchesList.info.participants[0].item1,
-                    response.data.matchesList.info.participants[0].item2,
-                    response.data.matchesList.info.participants[0].item3,
-                    response.data.matchesList.info.participants[0].item4,
-                    response.data.matchesList.info.participants[0].item5,
-                    response.data.matchesList.info.participants[0].item6,
-                ]);
+
                 response.data.matchesList.info.participants.map((sumDetail) => {
-                    if (sumDetail.summonerName.toLowerCase() === summoner.toLowerCase()) {
+                    if (
+                        sumDetail.summonerName.toLowerCase() === summoner.toLowerCase()
+                    ) {
                         setSummonerResearch(sumDetail);
+                        setPlayerItems([
+                            sumDetail.item0,
+                            sumDetail.item1,
+                            sumDetail.item2,
+                            sumDetail.item3,
+                            sumDetail.item4,
+                            sumDetail.item5,
+                            sumDetail.item6,
+                        ]);
                     }
                 });
             });
