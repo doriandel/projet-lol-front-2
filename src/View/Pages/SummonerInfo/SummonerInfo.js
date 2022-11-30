@@ -28,16 +28,17 @@ function SummonerInfo() {
                     setPuuid(response.data.summonnersDetail.puuid);
                 });
         }
-    }, [summonerName]);
 
-    useEffect(() => {
         if (puuid !== null) {
             axios
                 .get(`http://localhost:8000/api/getMatches/${puuid}`)
                 .then((response) => setMatchList(response.data.matchesList));
             // console.log("Matchlist : ", matchList);
         }
-    }, [puuid]);
+    }, [summonerName, puuid]);
+
+    useEffect(() => { 
+    });
 
     /*******************************************************************
                                 RENDER

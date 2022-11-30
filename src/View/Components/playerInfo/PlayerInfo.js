@@ -22,7 +22,7 @@ function PlayerInfo(props) {
                 <div className="flex flex-col p-6">
                     <div className="container-crb flex items-center gap-2 pb-8">
                         <a className="btn bg-gray-900 rounded-lg flex justify-center" href="/">
-                            <img class="w-[12px]" src="/icon.svg" alt="" />
+                            <img className="w-[12px]" src="/icon.svg" alt="" />
                         </a>
                         <a className="link-1 xl:text-xl lg:text-lg font-bold text-gray-500" href="/">Summoner selection</a>
                         <div className="sep xl:text-xl lg:text-lg font-bold text-gray-500">/</div>
@@ -38,9 +38,9 @@ function PlayerInfo(props) {
                                     alt="profileIcon"
                                 />
                                 <p className="absolute bottom-0 left-1/2 translate-y-1/2 -translate-x-1/2 bg-blue-600 rounded-md px-2 m-0">
-                                    <p className="text-white">
+                                    <span className="text-white">
                                         {sumDetails.summonerLevel}
-                                    </p>
+                                    </span>
                                 </p>
                             </div>
                         </div>

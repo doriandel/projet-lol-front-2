@@ -67,9 +67,7 @@ function MatchDetail(props) {
                     }
                 });
             });
-    }, [match]);
 
-    useEffect(() => {
         if (participant !== null) {
             participant.map((summoner) => {
                 if (summoner.teamId === 100 && team1.length < 5) {
@@ -86,7 +84,20 @@ function MatchDetail(props) {
                 }
             });
         }
-    }, [participant]);
+
+        function revealMatches(){
+            let matches = document.querySelectorAll('.container-matches .match');
+            matches.forEach(function(match){
+                if(!match.classList.contains('style-reveal')){
+                match.classList.add('style-reveal');
+                }
+            })
+        }
+        revealMatches();
+    }, [match, participant]);
+
+    useEffect(() => {
+    });
 
     /*******************************************************************
                                 FONCTION RENDER 
@@ -95,7 +106,7 @@ function MatchDetail(props) {
     function renderMatches() {
         if (summonerResearch !== null) {
             return (
-                <li key={match} className="flex items-stretch w-full mb-1 last:mb-0">
+                <li key={match} className="match flex items-stretch w-full mb-1 last:mb-0">
                     <Link
                         to={`/matchtimeline/${match}`}
                         state={{team1: team1, team2: team2}}
@@ -231,9 +242,7 @@ function MatchDetail(props) {
             );
         } else {
             return (
-                <div className="flex text-[24px] text-blue-800 font-bold w-1/2 h-[160px] justify-center items-center border-4 border-red-800 rounded-[20px]">
-                    Chargement ...
-                </div>
+                <div className="w-full h-[100vh]"></div>
             );
         }
     }
