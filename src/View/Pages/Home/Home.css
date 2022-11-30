@@ -1,3 +1,21 @@
+.card{
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity .25s ease-out, transform .25s ease-out;
+}
+.card:nth-child(2){
+  transition-delay: 100ms;
+}
+.card:nth-child(3){
+  transition-delay: 200ms;
+}
+.style-reveal{
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media screen and (min-width: 1600px) {
   .container-landing {
     height: 100vh;

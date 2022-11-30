@@ -1,0 +1,6 @@
+button img{
+    transition: transform .25s ease-out;
+}
+button:hover img{
+    transform: rotate(180deg) translateX(-4px);
+}
