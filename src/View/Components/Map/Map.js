@@ -8,7 +8,7 @@ function Map(props) {
         <div>
             <canvas
                 id="canvas"
-                className={`flex bg-[url(http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png)] bg-cover w-[750px] h-[750px] rounded-2xl`}
+                className={`flex bg-[url(http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png)] bg-cover w-[500px] h-[500px] rounded-2xl`}
                 // ref={setCanvasRef}
                 onClick={(e)=>{console.log(e.clientX, " ", e.clientY)}}
             >

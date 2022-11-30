@@ -62,15 +62,26 @@ function MatchTimeline() {
                                 RENDER 
         ****************************************************************/
     return (
-        <div>
-            <div className="flex flex-row h-screen w-full bg-[#1E293B]">
+        <div className="h-screen">
+            <div className="container-crb flex items-center gap-2 pb-8">
+                <a className="btn bg-gray-900 rounded-lg flex justify-center" href="/">
+                    <img className="w-[12px]" src="/icon.svg" alt="" />
+                </a>
+                <a className="link-1 xl:text-xl lg:text-lg font-bold text-gray-500" href="/">Summoner selection</a>
+                <div className="sep xl:text-xl lg:text-lg font-bold text-gray-500">/</div>
+                <a className="link-1 xl:text-xl lg:text-lg font-bold text-gray-500" href="">Match list</a>
+                <div className="sep xl:text-xl lg:text-lg font-bold text-gray-500">/</div>
+                <a className="link-1 xl:text-xl lg:text-lg font-bold text-gray-200" href="">Match Heat Map</a>
+            </div>
+            <div className="flex h-full w-full bg-gray-900">
                 <Map height={750} width={750} gameTime={timeEnd} />
-                <div className="flex flex-col w-full">
+                <div className="flex flex-col h-full w-full">
                     <Team team1={team1} team2={team2} />
-                    <ul>
-                        <StatMatch frames={frames} team1={team1} team2={team2} />
-                    </ul>
-                    
+                    <div className="container-logs overflow-scroll p-4 bg-gray-800 rounded-xl">
+                        <ul>
+                            <StatMatch frames={frames} team1={team1} team2={team2} />
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
