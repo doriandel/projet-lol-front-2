@@ -12,8 +12,10 @@ function MatchTimeline() {
 
     const [team1, setTeam1] = useState(null);
     const [team2, setTeam2] = useState(null);
-    const [matchTimeline, setMatchTimeline] = useState(null);
-    const [participants, setParticipants] = useState(null);
+
+    // const [matchTimeline, setMatchTimeline] = useState(null);
+    // const [participants, setParticipants] = useState(null);
+    
     const [frames, setFrames] = useState(null);
     const [timeEnd, setTimeEnd] = useState(null);
 
@@ -42,21 +44,12 @@ function MatchTimeline() {
         axios
             .get(`http://127.0.0.1:8000/api/getTimelineMatch/${matchId}`)
             .then((response) => {
-                setMatchTimeline(response.data.timelineMatch.info.frames);
-                setParticipants(response.data.timelineMatch.info.participants);
+                // setMatchTimeline(response.data.timelineMatch.info.frames);
+                // setParticipants(response.data.timelineMatch.info.participants);
                 setFrames(response.data.timelineMatch.info.frames);
                 setTimeEnd(response.data.timelineMatch.info.frames[response.data.timelineMatch.info.frames.length -1].timestamp);
             });
     }, [matchId]);
-
-    // useEffect de récupération des participants du match
-    useEffect(() => {
-        if (participants !== null) {
-            participants.map((participant) => {
-                // console.log(participant);
-            });
-        }
-    }, [matchTimeline]);
 
     /*******************************************************************
                                 RENDER 

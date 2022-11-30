@@ -10,13 +10,10 @@ function StatMatch(props) {
         ****************************************************************/
 
     // console.log("frames props :", frames);
-    // console.log("events1 :", events);
-    // console.log("timestamp :", timestamp);
     // console.log("championKillEvents", championKillEvents);
-    // console.log("dateEvents", timeEvents);
     // console.log("team1", team1);
     // console.log("team2", team2);
-    console.log("teams", teams);
+    // console.log("teams", teams);
 
     /*******************************************************************
                                 USEEFFECT 
@@ -31,9 +28,7 @@ function StatMatch(props) {
     useEffect(() => {
         if (frames !== null)
             frames.map((events) => {
-                // setEvents(events);
                 events.events.map((kill) => {
-                    // console.log("kill", kill);
                     if (
                         championKillEvents.length === 0 &&
                         kill.type === "CHAMPION_KILL"
@@ -60,23 +55,34 @@ function StatMatch(props) {
                                 " : " +
                                 new Date(kill.timestamp).getSeconds()}
                         </p>
-                        <br />
-                        <p className="text-blue-500 mx-5">
-                            {teams.map((killer) => {
-                                console.log("killer", killer);
-                                if (killer[2] === kill.killerId) {
-                                    return killer[0];
-                                }
-                            })}
-                        </p>
-
-                        {/* <p className="text-amber-500 mx-5">--></p> */}
-                        <p className="text-red-500 mr-5">{teams.map((victim) => {
-                                console.log("victim", victim);
-                                if (victim[2] === kill.victimId) {
-                                    return victim[0];
-                                }
-                            })}</p>
+                        {teams.map((killer, key) => {
+                            if (killer[2] === kill.killerId) {
+                                return (
+                                    <div key={key} className="flex text-blue-500 mx-5">
+                                        <p>{killer[0]}</p>
+                                        <img
+                                            className="h-6 w-6 rounded-md"
+                                            src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${killer[1]}.png`}
+                                            alt={`img champion ${killer[1]}`}
+                                        />
+                                    </div>
+                                );
+                            }
+                        })}
+                        {teams.map((victim, key) => {
+                            if (victim[2] === kill.victimId) {
+                                return (
+                                    <div key={key} className="flex text-red-500 mr-5">
+                                        <p>{victim[0]}</p>
+                                        <img
+                                            className="h-6 w-6 rounded-md"
+                                            src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${victim[1]}.png`}
+                                            alt={`img champion ${victim[1]}`}
+                                        />
+                                    </div>
+                                );
+                            }
+                        })}
                     </li>
                 );
             });
