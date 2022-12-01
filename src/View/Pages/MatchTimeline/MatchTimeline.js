@@ -95,10 +95,10 @@ function MatchTimeline() {
           Match Heat Map
         </a>
       </div>
-      <h2 className="text-2xl font-bold text-gray-200 w-fullr">
+      <h2 className="text-2xl font-bold text-gray-200 w-full">
         {summonerName}'s Matches
       </h2>
-      <div className="flex w-full self-stretch p-8 rounded-xl bg-gray-900">
+      <div className="flex w-full h-full p-8 rounded-xl bg-gray-900">
         <Map gameTime={timeEnd} />
         <div className="flex w-full pl-8 gap-4">
           <div className="container-logs overflow-y-scroll p-4 bg-gray-800 rounded-xl w-full self-stretch">
