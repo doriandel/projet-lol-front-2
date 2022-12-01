@@ -29,7 +29,7 @@ function Input() {
       <div className="text-gray-200 text-md pb-2">Pseudo</div>
       <input
         id="inputhome"
-        className="rounded-md h-10 bg-gray-800 px-4 w-full border border-gray-700 mb-6"
+        className="rounded-md h-10 bg-gray-800 px-4 w-full border border-gray-700 mb-6 text-gray-200"
         type="text"
         name="summonerName"
         placeholder="Entrez un nom de joueur"
