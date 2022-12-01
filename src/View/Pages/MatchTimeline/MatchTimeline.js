@@ -63,7 +63,7 @@ function MatchTimeline() {
         ****************************************************************/
   return (
     <div className="h-screen p-6 bg-gray-800 box-border flex flex-col gap-4">
-      <div className="container-crb flex items-center gap-2 ">
+      <div className="container-crb flex items-center gap-2">
         <a
           className="btn bg-gray-900 rounded-lg flex justify-center cursor-pointer"
           onClick={() => navigate(-1)}
@@ -98,10 +98,10 @@ function MatchTimeline() {
       <h2 className="text-2xl font-bold text-gray-200 w-full">
         {summonerName}'s Matches
       </h2>
-      <div className="flex w-full self-stretch p-8 rounded-xl bg-gray-900">
+      <div className="flex w-full p-8 rounded-xl bg-gray-900">
         <Map gameTime={timeEnd} frames={frames} team1={team1} team2={team2} />
         <div className="flex w-full pl-8 gap-4">
-          <div className="container-logs overflow-y-scroll p-4 bg-gray-800 rounded-xl w-full self-stretch">
+          <div className="container-logs overflow-y-scroll p-4 bg-gray-800 rounded-xl w-full h-[730px]">
             <ul>
               <StatMatch frames={frames} team1={team1} team2={team2} />
             </ul>
