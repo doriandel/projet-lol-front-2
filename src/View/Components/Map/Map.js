@@ -7,20 +7,18 @@ function Map(props) {
   const [championKillEvents, setChampionKillEvents] = useState([]);
   const canvasRef = useRef(null);
 
-  function setImg(x, y) {
+  function canvas(x, y, t){
     if (!canvasRef.current) return;
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    // console.log(ctx);
-    ctx.save();
-    ctx.rotate((Math.PI / 180) * 90);
-    ctx.restore();
-    const img = new Image();
-    img.src =
-      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg";
-    img.onload = () => {
-      ctx.drawImage(img, x, y, 500, 500); // coordonner du summonerId a inclure
-    };
+        const canvas = canvasRef.current;
+        console.log(canvas);
+        const ctx = canvas.getContext("2d");
+        const img = new Image();
+        setTimeout(() => {
+            ctx.save();
+            ctx.rotate(90*Math.PI/180);
+            ctx.drawImage(img, x, y, 500, 500); // coordonner du summonerId a inclure
+        }, t);
+        img.src ="/icon-skull-rt.svg";
   }
 
   function eraseImg() {
@@ -29,7 +27,6 @@ function Map(props) {
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
   }
-
   // useEffect(() => {
   //     setImg();
   // }, []);
@@ -54,8 +51,7 @@ function Map(props) {
       console.log("championKillEvents", championKillEvents);
       championKillEvents.map((kill) => {
         if (kill.position !== null) {
-          // console.log("kill.position", kill.position.x);
-          setImg(kill.position.x, kill.position.y);
+          canvas(kill.position.x, kill.position.y, (kill.timestamp)/100);
         }
       });
     }
@@ -79,20 +75,26 @@ function Map(props) {
       });
   }, [frames]);
   return (
-    <div className="flex flex-col gap-2">
-      <canvas
-        id="canvas"
-        className={`flex bg-[url(http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png)] bg-cover w-[640px] h-[640px] rounded-2xl`}
-        ref={canvasRef}
-        height={16000}
-        width={16000}
-        onClick={(e) => {
-          eraseImg();
-          console.log(e.clientX, " ", e.clientY);
-          console.log(e.target.getBoundingClientRect());
-        }}
-      ></canvas>
-      <Controle gameTime={props.gameTime} />
+    <div className="flex flex-col w-[600px]">
+        <div className="relative w-[600px] h-[600px]">
+            <div className="absolute z-1 bg-[url(http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png)] bg-cover w-[600px] h-[600px] rounded-2xl"></div>
+            <canvas
+                id="canvas"
+                className={`absolute z-2 w-[600px] h-[600px] -rotate-90`}
+                ref={canvasRef}
+                height={16000}
+                width={16000}
+                onClick={(e) => {
+                eraseImg();
+                console.log(e.clientX, " ", e.clientY);
+                console.log(e.target.getBoundingClientRect());
+                }}
+            ></canvas>
+
+        </div>
+      <div className="container-controle">
+        <Controle gameTime={props.gameTime} />
+      </div>
     </div>
   );
 }

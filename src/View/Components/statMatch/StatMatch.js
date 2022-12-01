@@ -41,7 +41,6 @@ function StatMatch(props) {
                         event.type === "CHAMPION_KILL") ||
                         (eventEvents.length === 0 &&
                         event.type === "BUILDING_KILL")) {
-                        console.log(event);
                         setEventEvents((eventEvents) => [
                             ...eventEvents,
                             event,

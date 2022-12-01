@@ -99,7 +99,9 @@ function MatchTimeline() {
         {summonerName}'s Matches
       </h2>
       <div className="flex w-full p-8 rounded-xl bg-gray-900">
-        <Map gameTime={timeEnd} frames={frames} team1={team1} team2={team2} />
+        <div>
+            <Map gameTime={timeEnd} frames={frames} team1={team1} team2={team2} />
+        </div>
         <div className="flex w-full pl-8 gap-4">
           <div className="container-logs overflow-y-scroll p-4 bg-gray-800 rounded-xl w-full h-[730px]">
             <ul>
