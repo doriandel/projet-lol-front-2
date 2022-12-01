@@ -5,7 +5,7 @@ function team(props) {
   const { team1, team2 } = props;
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-8">
       <div className="flex flex-col px-2 gap-4">
         <h2 className="font-bold text-2xl text-blue-500">Team Blue</h2>
         <ol className="flex-col p-4 bg-gray-800 rounded-xl space-y-2">
