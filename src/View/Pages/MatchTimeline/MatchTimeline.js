@@ -77,7 +77,7 @@ function MatchTimeline() {
             <div className="flex h-full w-full p-8 rounded-xl bg-gray-900">
                 <Map gameTime={timeEnd} />
                 <div className="flex flex-col h-full w-full pl-8">
-                    <div className="container-logs overflow-scroll p-4 bg-gray-800 rounded-xl">
+                    <div className="container-logs overflow-y-scroll p-4 bg-gray-800 rounded-xl">
                         <ul>
                             <StatMatch frames={frames} team1={team1} team2={team2} />
                         </ul>
