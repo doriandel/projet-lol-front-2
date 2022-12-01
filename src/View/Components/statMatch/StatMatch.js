@@ -5,11 +5,11 @@ function StatMatch(props) {
     const [teams, setTeams] = useState(null);
     const [eventEvents, setEventEvents] = useState([]);
 
-    function addO(item){
-        if(item < 10){
-            return '0' + item;
+    function addO(item) {
+        if (item < 10) {
+            return "0" + item;
         } else {
-            return '' + item;
+            return "" + item;
         }
     }
 
@@ -37,12 +37,11 @@ function StatMatch(props) {
         if (frames !== null)
             frames.map((events) => {
                 events.events.map((event) => {
-                    if (
-                        eventEvents.length === 0 &&
-                        event.type === "CHAMPION_KILL" ||
-                        event.type === "BUILDING_KILL"
-
-                    ){
+                    if ((eventEvents.length === 0 &&
+                        event.type === "CHAMPION_KILL") ||
+                        (eventEvents.length === 0 &&
+                        event.type === "BUILDING_KILL")) {
+                        console.log(event);
                         setEventEvents((eventEvents) => [
                             ...eventEvents,
                             event,
@@ -56,128 +55,202 @@ function StatMatch(props) {
                             FONCTION RENDER 
         ****************************************************************/
     function renderStatMatch() {
-
         if (eventEvents !== []) {
             return eventEvents.map((eventEvent, key) => {
-                if(eventEvent.type === "CHAMPION_KILL"){
+                if (eventEvent.type === "CHAMPION_KILL" && eventEvent.killerId !== 0) {
                     return (
-                        <li key={key} className="flex items-center mb-4 last:mb-0">
+                        <li
+                            key={key}
+                            className="flex items-center mb-4 last:mb-0"
+                        >
                             <p className="text-gray-500 font-bold text-sm">
-                                {addO(new Date(eventEvent.timestamp).getMinutes()) + " : " + addO(new Date(eventEvent.timestamp).getSeconds())}
+                                {addO(
+                                    new Date(eventEvent.timestamp).getMinutes()
+                                ) +
+                                    " : " +
+                                    addO(
+                                        new Date(
+                                            eventEvent.timestamp
+                                        ).getSeconds()
+                                    )}
                             </p>
                             {teams.map((killer, key) => {
                                 if (killer[2] === eventEvent.killerId) {
-                                    if (killer[2] === 1 || killer[2] === 2 ||killer[2] === 3 ||killer[2] === 4 ||killer[2] === 5){
+                                    if (killer[2] <= 5) {
                                         return (
-                                            <div key={key} className="flex font-bold text-red-500 mx-4">
+                                            <div
+                                                key={key}
+                                                className="flex font-bold text-red-500 mx-4"
+                                            >
                                                 <img
                                                     className="h-8 w-8 rounded-full mr-2"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${killer[1]}.png`}
                                                     alt={`img champion ${killer[1]}`}
                                                 />
-                                                <p>{killer[0]} ({killer[1]})</p>
+                                                <p>
+                                                    {killer[0]} ({killer[1]})
+                                                </p>
                                             </div>
                                         );
-    
-                                    } 
-                                    else {
+                                    } else {
                                         return (
-                                            <div key={key} className="flex font-bold text-blue-500 mx-4">
+                                            <div
+                                                key={key}
+                                                className="flex font-bold text-blue-500 mx-4"
+                                            >
                                                 <img
                                                     className="h-8 w-8 rounded-full mr-2"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${killer[1]}.png`}
                                                     alt={`img champion ${killer[1]}`}
                                                 />
-                                                <p>{killer[0]} ({killer[1]})</p>
+                                                <p>
+                                                    {killer[0]} ({killer[1]})
+                                                </p>
                                             </div>
                                         );
                                     }
                                 }
                             })}
-                            <img className="w-[24px]" src="/icon-skull.svg" alt="" />
+                            <img
+                                className="w-[24px]"
+                                src="/icon-skull.svg"
+                                alt=""
+                            />
                             {teams.map((victim, key) => {
                                 if (victim[2] === eventEvent.victimId) {
-                                    if (victim[2] === 1 || victim[2] === 2 ||victim[2] === 3 ||victim[2] === 4 ||victim[2] === 5){
+                                    if (victim[2] <= 5) {
                                         return (
-                                            <div key={key} className="flex font-bold text-red-500 ml-4">
+                                            <div
+                                                key={key}
+                                                className="flex font-bold text-red-500 ml-4"
+                                            >
                                                 <img
                                                     className="h-8 w-8 rounded-full mr-2"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${victim[1]}.png`}
                                                     alt={`img champion ${victim[1]}`}
                                                 />
-                                                <p>{victim[0]} ({victim[1]})</p>
+                                                <p>
+                                                    {victim[0]} ({victim[1]})
+                                                </p>
+                                            </div>
+                                        );
+                                    } else {
+                                        return (
+                                            <div
+                                                key={key}
+                                                className="flex font-bold text-blue-500 ml-4"
+                                            >
+                                                <img
+                                                    className="h-8 w-8 rounded-full mr-2"
+                                                    src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${victim[1]}.png`}
+                                                    alt={`img champion ${victim[1]}`}
+                                                />
+                                                <p>
+                                                    {victim[0]} ({victim[1]})
+                                                </p>
+                                            </div>
+                                        );
+                                    }
+                                }
+                            })}
+                        </li>
+                    );
+                }
+                if (eventEvent.type === "BUILDING_KILL" && eventEvent.killerId !== 0) {
+                    return (
+                        <li
+                            key={key}
+                            className="flex items-center mb-4 last:mb-0"
+                        >
+                            <p className="text-gray-500 font-bold text-sm">
+                                {addO(
+                                    new Date(eventEvent.timestamp).getMinutes()
+                                ) +
+                                    " : " +
+                                    addO(
+                                        new Date(
+                                            eventEvent.timestamp
+                                        ).getSeconds()
+                                    )}
+                            </p>
+                            {teams.map((killer, key) => {
+                                if (killer[2] === eventEvent.killerId) {
+                                    if (killer[2] <= 5) {
+                                        return (
+                                            <div
+                                                key={key}
+                                                className="flex font-bold text-red-500 mx-4"
+                                            >
+                                                <img
+                                                    className="h-8 w-8 rounded-full mr-2"
+                                                    src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${killer[1]}.png`}
+                                                    alt={`img champion ${killer[1]}`}
+                                                />
+                                                <p>
+                                                    {killer[0]} ({killer[1]})
+                                                </p>
                                             </div>
                                         );
                                     }
                                     else {
                                         return (
-                                            <div key={key} className="flex font-bold text-blue-500 ml-4">
-                                                <img
-                                                    className="h-8 w-8 rounded-full mr-2"
-                                                    src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${victim[1]}.png`}
-                                                    alt={`img champion ${victim[1]}`}
-                                                />
-                                                <p>{victim[0]} ({victim[1]})</p>
-                                            </div>
-                                        );
-                                    }
-                                }
-                            })}
-                        </li>
-                    );
-
-                }
-                if(eventEvent.type === "BUILDING_KILL"){
-                    return (
-                        <li key={key} className="flex items-center mb-4 last:mb-0">
-                            <p className="text-gray-500 font-bold text-sm">
-                                {addO(new Date(eventEvent.timestamp).getMinutes()) + " : " + addO(new Date(eventEvent.timestamp).getSeconds())}
-                            </p>
-                            {teams.map((killer, key) => {
-                                if (killer[2] === eventEvent.killerId) {
-                                    if (killer[2] <= 5){
-                                        return (
-                                            <div key={key} className="flex font-bold text-red-500 mx-4">
+                                            <div
+                                                key={key}
+                                                className="flex font-bold text-blue-500 mx-4"
+                                            >
                                                 <img
                                                     className="h-8 w-8 rounded-full mr-2"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${killer[1]}.png`}
                                                     alt={`img champion ${killer[1]}`}
                                                 />
-                                                <p>{killer[0]} ({killer[1]})</p>
+                                                <p>
+                                                    {killer[0]} ({killer[1]})
+                                                </p>
                                             </div>
                                         );
-    
                                     } 
-                                    if (killer[2] > 5) {
-                                        return (
-                                            <div key={key} className="flex font-bold text-blue-500 mx-4">
-                                                <img
-                                                    className="h-8 w-8 rounded-full mr-2"
-                                                    src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${killer[1]}.png`}
-                                                    alt={`img champion ${killer[1]}`}
-                                                />
-                                                <p>{killer[0]} ({killer[1]})</p>
-                                            </div>
-                                        );
-                                    }
                                 }
+                                
                             })}
-                            {/* ${`
-                                if(eventEvent.killerId === 0){
-                                    return(
-                                        <div key={key} className="flex font-bold text-red-500 mx-4">
-                                            <p>Minions</p>
-                                        </div>
-                                    )
-    
-                                }`
-                            } */}
-                            <img className="w-[24px]" src="/icon-tower-break.svg" alt="" />
+                            <img
+                                className="w-[24px]"
+                                src="/icon-tower-break.svg"
+                                alt=""
+                            />
                         </li>
                     );
-                    
                 }
-
+                if (eventEvent.type === "BUILDING_KILL" && eventEvent.killerId === 0) {
+                    return (
+                        <li
+                            key={key}
+                            className="flex items-center mb-4 last:mb-0"
+                        >
+                            <p className="text-gray-500 font-bold text-sm">
+                                {addO(
+                                    new Date(eventEvent.timestamp).getMinutes()
+                                ) +
+                                    " : " +
+                                    addO(
+                                        new Date(
+                                            eventEvent.timestamp
+                                        ).getSeconds()
+                                    )}
+                            </p>
+                            <div
+                                key={key}
+                                className="flex font-bold text-blue-500 mx-4"
+                            >
+                                <p>minion :</p>
+                            </div>
+                            <img
+                                className="w-[24px]"
+                                src="/icon-tower-break.svg"
+                                alt=""
+                            />
+                        </li>)
+                };
+                return;
             });
         }
     }
