@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import "./MatchTimeline.css";
 import Map from "../../Components/Map/Map";
 import Team from "../../Components/team/team";
@@ -9,9 +9,11 @@ import StatMatch from "../../Components/statMatch/StatMatch";
 function MatchTimeline() {
     const { matchId } = useParams(null);
     const location = useLocation();
+    const navigate = useNavigate();
 
     const [team1, setTeam1] = useState(null);
     const [team2, setTeam2] = useState(null);
+    const [summonerName, setSummonerName] = useState(null);
 
     // const [matchTimeline, setMatchTimeline] = useState(null);
     // const [participants, setParticipants] = useState(null);
@@ -37,6 +39,7 @@ function MatchTimeline() {
     useEffect(() => {
         setTeam1(location.state.team1);
         setTeam2(location.state.team2);
+        setSummonerName(location.state.summonerName);
     }, []);
 
     // récupération de la timeline du match :
@@ -55,26 +58,31 @@ function MatchTimeline() {
                                 RENDER 
         ****************************************************************/
     return (
-        <div className="h-screen">
-            <div className="container-crb flex items-center gap-2 pb-8">
-                <a className="btn bg-gray-900 rounded-lg flex justify-center" href="/">
+        <div className="h-screen p-6 bg-gray-800">
+            <div className="container-crb flex items-center gap-2">
+                <a className="btn bg-gray-900 rounded-lg flex justify-center cursor-pointer" onClick={() => navigate(-1)}>
                     <img className="w-[12px]" src="/icon.svg" alt="" />
                 </a>
                 <a className="link-1 xl:text-xl lg:text-lg font-bold text-gray-500" href="/">Summoner selection</a>
                 <div className="sep xl:text-xl lg:text-lg font-bold text-gray-500">/</div>
-                <a className="link-1 xl:text-xl lg:text-lg font-bold text-gray-500" href="">Match list</a>
+                <a className="link-1 xl:text-xl lg:text-lg font-bold text-gray-500 cursor-pointer" onClick={() => navigate(-1)}>Match list</a>
                 <div className="sep xl:text-xl lg:text-lg font-bold text-gray-500">/</div>
                 <a className="link-1 xl:text-xl lg:text-lg font-bold text-gray-200" href="">Match Heat Map</a>
             </div>
-            <div className="flex h-full w-full bg-gray-900">
-                <Map height={750} width={750} gameTime={timeEnd} />
-                <div className="flex flex-col h-full w-full">
-                    <Team team1={team1} team2={team2} />
+            <div>
+                <h2 className="text-2xl font-bold text-gray-200 py-4 w-full">
+                    {summonerName}'s Matches
+                </h2>
+            </div>
+            <div className="flex h-full w-full p-8 rounded-xl bg-gray-900">
+                <Map gameTime={timeEnd} />
+                <div className="flex flex-col h-full w-full pl-8">
                     <div className="container-logs overflow-scroll p-4 bg-gray-800 rounded-xl">
                         <ul>
                             <StatMatch frames={frames} team1={team1} team2={team2} />
                         </ul>
                     </div>
+                    <Team team1={team1} team2={team2} />
                 </div>
             </div>
         </div>

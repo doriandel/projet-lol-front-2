@@ -11,6 +11,7 @@ function MatchDetail(props) {
 
     const [team1, setTeam1] = useState([]);
     const [team2, setTeam2] = useState([]);
+    const [summonerName, setSummonerName] = useState([]);
 
     const [playerItems, setPlayerItems] = useState(null);
     const itemsValue = {
@@ -87,6 +88,9 @@ function MatchDetail(props) {
                 }
             });
         }
+        if(summonerName !== null){
+            setSummonerName(summoner);
+        }
 
         function revealMatches(){
             let matches = document.querySelectorAll('.container-matches .match');
@@ -112,7 +116,7 @@ function MatchDetail(props) {
                 <li key={match} className="match flex items-stretch w-full mb-1 last:mb-0">
                     <Link
                         to={`/matchtimeline/${match}`}
-                        state={{team1: team1, team2: team2}}
+                        state={{team1: team1, team2: team2, summonerName: summonerName}}
                         className={
                             "block " +
                             (summonerResearch.win
