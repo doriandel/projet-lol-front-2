@@ -16,15 +16,17 @@ function MatchTimeline() {
     const [team2, setTeam2] = useState(null);
     const [summonerName, setSummonerName] = useState(null);
 
-    // const [matchTimeline, setMatchTimeline] = useState(null);
-    // const [participants, setParticipants] = useState(null);
-
     const [frames, setFrames] = useState(null);
     const [timeEnd, setTimeEnd] = useState(null);
 
+    // remonte l'info du composant enfant
     const [start, setStart] = useState(false);
     const play = (start) => setStart(start);
     console.log("start", start);
+
+    const [time, setTime] = useState(0);
+    const timeMatch = (time) => setTime(time);
+
     /*******************************************************************
                                LOG OF STATE
         ****************************************************************/
@@ -51,8 +53,6 @@ function MatchTimeline() {
         axios
             .get(`http://127.0.0.1:8000/api/getTimelineMatch/${matchId}`)
             .then((response) => {
-                // setMatchTimeline(response.data.timelineMatch.info.frames);
-                // setParticipants(response.data.timelineMatch.info.participants);
                 setFrames(response.data.timelineMatch.info.frames);
                 setTimeEnd(
                     response.data.timelineMatch.info.frames[
@@ -106,14 +106,16 @@ function MatchTimeline() {
             <div className="container-map-stats flex w-full rounded-xl bg-gray-900">
                 <div>
                     <Map
-                        gameTime={timeEnd}
+                        timeEnd={timeEnd}
                         frames={frames}
                         team1={team1}
                         team2={team2}
                         start={start}
+                        timeMatch={timeMatch} 
+                        time={time}
                     />
                     <div className="container-controle">
-                        <Controle gameTime={timeEnd} play={play} />
+                        <Controle timeEnd={timeEnd} play={play} time={time} />
                     </div>
                 </div>
 

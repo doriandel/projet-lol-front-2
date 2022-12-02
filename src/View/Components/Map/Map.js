@@ -3,9 +3,10 @@ import Controle from "../Controle/Controle";
 import "./map.css";
 
 function Map(props) {
-    const { gameTime, frames, team1, team2, start } = props;
+    const { timeMatch, frames, start } = props;
     const [championKillEvents, setChampionKillEvents] = useState([]);
     const canvasRef = useRef(null);
+    const [time, setTime] = useState(0);
 
     /*******************************************************************
      *                             LOG OF STATE
@@ -14,26 +15,17 @@ function Map(props) {
     // console.log("frames :", frames);
     // console.log("team1 :", team1);
     // console.log("team2 :", team2);
-    console.log("start map :", start);
+    // console.log("start map :", start);
 
     /*******************************************************************
      *                            USEEFFECT
      * ****************************************************************/
 
-    // function canvas(x, y, t) {
-    //     if (!canvasRef.current) return;
-    //     const canvas = canvasRef.current;
-    //     console.log(canvas);
-    //     // const ctx = canvas.getContext("2d");
-    //     const img = new Image();
-    //     img.src = "/icon-skull-rt.svg";
-
-    // setTimeout(() => {
-    // ctx.save();
-    // ctx.rotate((90 * Math.PI) / 180);
-    // ctx.drawImage(img, x, y, 500, 500);
-    // }, t);
-    // }
+    useEffect(() => {
+        if (time) {
+            timeMatch(time);
+        }
+    }, [time]);
 
     function drawKill(x, y) {
         if (!canvasRef.current) return;
@@ -48,16 +40,15 @@ function Map(props) {
     const [timeOutId, setTimeOutId] = useState(null);
 
     function startPlayer(x, y, t) {
-      if (typeof timeOutId === 'number') {
-        pausePlayer(timeOutId);
-      }
+        if (typeof timeOutId === "number") {
+            pausePlayer(timeOutId);
+        }
         setTimeOutId(
             setTimeout((e) => {
                 drawKill(x, y);
+                setTime(t);
             }, t)
         );
-    console.log("setTimeOut :", timeOutId);
-
     }
 
     function pausePlayer(timeOutId) {
@@ -89,16 +80,13 @@ function Map(props) {
             });
         if (championKillEvents.length !== 0 && start === true) {
             championKillEvents.map((kill) => {
-                if (kill.position !== null ) {
+                if (kill.position !== null) {
                     startPlayer(
                         kill.position.x,
                         kill.position.y,
                         kill.timestamp / 50
                     );
                 }
-                // if (start === false) {
-                //     pausePlayer();
-                // }
             });
         }
     }, [frames, start]);
@@ -120,6 +108,11 @@ function Map(props) {
                 });
             });
     }, [frames]);
+    
+    /*******************************************************************
+                                RENDER 
+        ****************************************************************/
+       
     return (
         <div className="container-main flex flex-col">
             <div className="container-canvas relative">
@@ -130,14 +123,11 @@ function Map(props) {
                     ref={canvasRef}
                     height={16000}
                     width={16000}
-                    onClick={(e) => {
-                        eraseImg();
+                    onClick={() => {
+                        // eraseImg();
                     }}
                 ></canvas>
             </div>
-            {/* <div className="container-controle"> */}
-            {/* <Controle gameTime={props.gameTime} /> */}
-            {/* </div> */}
         </div>
     );
 }
