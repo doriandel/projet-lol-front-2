@@ -33,7 +33,7 @@ function Controle(props) {
       setInterval(setPlayTime(playTime + speed), speed);
       for (let _playTime = playTime; _playTime < 10000; _playTime + speed) {
         console.log(playTime);
-        setPlayTime((playTime += speed));
+        setPlayTime((playTime + speed));
       }
     }
     if (!start) {

@@ -56,7 +56,8 @@ function MatchDetail(props) {
 
                 response.data.matchesList.info.participants.map((sumDetail) => {
                     if (
-                        sumDetail.summonerName.toLowerCase() === summoner.toLowerCase()
+                        sumDetail.summonerName.toLowerCase() ===
+                        summoner.toLowerCase()
                     ) {
                         setSummonerResearch(sumDetail);
                         setPlayerItems([
@@ -77,34 +78,44 @@ function MatchDetail(props) {
                 if (summoner.teamId === 100 && team1.length < 5) {
                     setTeam1((team1) => [
                         ...team1,
-                        [summoner.summonerName, summoner.championName, summoner.participantId],
+                        [
+                            summoner.summonerName,
+                            summoner.championName,
+                            summoner.participantId,
+                        ],
                     ]);
                 }
                 if (summoner.teamId === 200 && team1.length < 5) {
                     setTeam2((team2) => [
                         ...team2,
-                        [summoner.summonerName, summoner.championName, summoner.participantId],
+                        [
+                            summoner.summonerName,
+                            summoner.championName,
+                            summoner.participantId,
+                        ],
                     ]);
                 }
             });
         }
-        if(summonerName !== null){
+        if (summonerName !== null) {
             setSummonerName(summoner);
         }
 
-        function revealMatches(){
-            let matches = document.querySelectorAll('.container-matches .match');
-            matches.forEach(function(match){
-                if(!match.classList.contains('style-reveal')){
-                match.classList.add('style-reveal');
-                }
-            })
-        }
         revealMatches();
     }, [match, participant]);
 
-    useEffect(() => {
-    });
+    /*******************************************************************
+     *                             FUNCTIONS
+     * ****************************************************************/
+
+    function revealMatches() {
+        let matches = document.querySelectorAll(".container-matches .match");
+        matches.forEach(function (match) {
+            if (!match.classList.contains("style-reveal")) {
+                match.classList.add("style-reveal");
+            }
+        });
+    }
 
     /*******************************************************************
                                 FONCTION RENDER 
@@ -113,10 +124,17 @@ function MatchDetail(props) {
     function renderMatches() {
         if (summonerResearch !== null) {
             return (
-                <li key={match} className="match flex items-stretch w-full mb-1 last:mb-0">
+                <li
+                    key={match}
+                    className="match flex items-stretch w-full mb-1 last:mb-0"
+                >
                     <Link
                         to={`/matchtimeline/${match}`}
-                        state={{team1: team1, team2: team2, summonerName: summonerName}}
+                        state={{
+                            team1: team1,
+                            team2: team2,
+                            summonerName: summonerName,
+                        }}
                         className={
                             "block " +
                             (summonerResearch.win
@@ -248,9 +266,7 @@ function MatchDetail(props) {
                 </li>
             );
         } else {
-            return (
-                <div className="w-full h-[100vh]"></div>
-            );
+            return <div className="w-full h-[100vh]"></div>;
         }
     }
     /*******************************************************************
@@ -261,11 +277,3 @@ function MatchDetail(props) {
 }
 
 export default MatchDetail;
-
-// const [dateCreation, setDateCreation] = useState(null);
-
-// setDateCreation(
-//     new Date(
-//         response.data.matchesList.info.gameCreation
-//     ).toLocaleDateString("fr-FR")
-// );

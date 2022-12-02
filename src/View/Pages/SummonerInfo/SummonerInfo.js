@@ -16,9 +16,10 @@ function SummonerInfo() {
     // Recuperation des informations du joueur :
     useEffect(() => {
         if (summonerName !== null) {
-            const summonerNameWithoutSpace = summonerName.replace(" ", "");
+            const summonerNameWithoutSpace = summonerName.replace(/\s/g,'');
             // console.log("summonerName2 : ", summonerNameWithoutSpace);
-
+            // const str = '   Hello World   ';
+            // console.log(str.replace(/\s/g,''));
             axios
                 .get(
                     `http://localhost:8000/api/getSummoner/${summonerNameWithoutSpace}`

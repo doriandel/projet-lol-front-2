@@ -38,7 +38,7 @@ function Input() {
       />
       <div className="container-btn flex justify-end">
         <button type="submit" className="flex gap-2 items-center text-gray-200 bg-blue-600 px-4 py-2 rounded-md">
-          See the matches
+          Voir les matchs
           <img className="w-[12px] rotate-180" src="/icon.svg" alt="" />
         </button>
       </div>
