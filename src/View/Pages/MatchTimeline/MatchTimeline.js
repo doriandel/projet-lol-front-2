@@ -22,7 +22,6 @@ function MatchTimeline() {
     // remonte l'info du composant enfant
     const [start, setStart] = useState(false);
     const play = (start) => setStart(start);
-    console.log("start", start);
 
     const [time, setTime] = useState(0);
     const timeMatch = (time) => setTime(time);
@@ -36,6 +35,7 @@ function MatchTimeline() {
     // console.log("team1", team1);
     // console.log("team2", team2);
     // console.log("timeEnd", timeEnd);
+    // console.log("start", start);
 
     /*******************************************************************
                                 USEEFFECT 

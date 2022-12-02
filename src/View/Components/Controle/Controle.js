@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 function Controle(props) {
     const { timeEnd, play, time } = props;
-    const [inputValue, setInputValue] = useState(null);
+    const [inputValue, setInputValue] = useState(0);
     const [start, setStart] = useState(false);
 
     /*******************************************************************
@@ -29,7 +29,7 @@ function Controle(props) {
     /*******************************************************************
                                 RENDER 
         ****************************************************************/
-       
+
     return (
         <div className="flex flex-col gap-2 items-center">
             <input
@@ -40,7 +40,7 @@ function Controle(props) {
                 min={0}
                 max={timeEnd/50}
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                // onChange={(e) => setInputValue(e.target.value)}
             />
             <div className="flex flex-row gap-4 my-2 rounded-lg">
                 <button
