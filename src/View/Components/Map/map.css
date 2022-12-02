@@ -1,8 +1,79 @@
-.bgmap {
-    background-repeat: no-repeat;
+@media screen and (min-width: 1600px) {
+  .container-main{
+    width: 600px;
   }
+  .container-canvas{
+    width: 600px;
+    height: 600px;
+  }
+  .bg-canvas{
+    width: 600px;
+    height: 600px;
 
-/* img {
-  width: 100%;
-  height: 100%;
-} */
+  }
+  canvas{
+    width: 600px;
+    height: 600px;
+
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1600px) {
+  .container-main{
+    width: 400px;
+  }
+  .container-canvas{
+    width: 400px;
+    height: 400px;
+  }
+  .bg-canvas{
+    width: 400px;
+    height: 400px;
+
+  }
+  canvas{
+    width: 400px;
+    height: 400px;
+
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1024px) {
+  .container-main{
+    width: 600px;
+  }
+  .container-canvas{
+    width: 600px;
+    height: 600px;
+  }
+  .bg-canvas{
+    width: 600px;
+    height: 600px;
+
+  }
+  canvas{
+    width: 600px;
+    height: 600px;
+
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .container-main{
+    width: 325px;
+  }
+  .container-canvas{
+    width: 325px;
+    height: 325px;
+  }
+  .bg-canvas{
+    width: 325px;
+    height: 325px;
+
+  }
+  canvas{
+    width: 325px;
+    height: 325px;
+
+  }
+}

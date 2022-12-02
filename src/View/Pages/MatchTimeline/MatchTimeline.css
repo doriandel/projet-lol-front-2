@@ -1,1 +1,98 @@
+@media screen and (min-width: 1600px) {
+    .container-map-stats{
+        padding: 32px;
+    }
+    .container-main-match{
+        height: 100vh;
+    }
+    .container-left{
+        padding-left: 16px;
+        gap: 16px;
+    }
+    .container-logs{
+        height: 730px;
+        width: 100%;
+    }
+    .container-controle{
+        padding: 32px 0;
+    }
+    .btn{
+        height: 40px;
+        width: 40px;
+    }
+}
 
+@media screen and (min-width: 1024px) and (max-width: 1600px) {
+    .container-map-stats{
+        padding: 32px;
+    }
+    .container-main-match{
+        height: 100%;
+    }
+    .container-left{
+        padding-left: 16px;
+        flex-direction: column;
+    }
+    .container-logs{
+        height: 500px;
+        width: 100%;
+    }
+    .container-controle{
+        padding: 32px 0;
+    }
+    .btn{
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1024px) {
+    .container-map-stats{
+        padding: 24px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-left{
+        flex-direction: column;
+    }
+    .container-logs{
+        height: 500px;
+        width: 100%;
+    }
+    .container-controle{
+        padding: 16px 0;
+    }
+    .btn{
+        height: 32px;
+        width: 32px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .container-map-stats{
+        padding: 24px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-left{
+        flex-direction: column;
+    }
+    .container-logs{
+        height: 400px;
+        width: 100%;
+    }
+    .container-controle{
+        padding: 16px 0;
+    }
+    .btn{
+        height: 28px;
+        width: 28px;
+    }
+    .link-1,
+    .sep{
+        font-size: .75rem;
+    }
+    .summ-name{
+        display: none;
+    }
+}

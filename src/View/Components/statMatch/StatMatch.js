@@ -62,7 +62,7 @@ function StatMatch(props) {
                             key={key}
                             className="flex items-center mb-4 last:mb-0"
                         >
-                            <p className="text-gray-500 font-bold text-sm">
+                            <p className="event-timer text-gray-500 font-bold">
                                 {addO(
                                     new Date(eventEvent.timestamp).getMinutes()
                                 ) +
@@ -79,15 +79,15 @@ function StatMatch(props) {
                                         return (
                                             <div
                                                 key={key}
-                                                className="flex font-bold text-red-500 mx-4"
+                                                className="flex xs:flex-col font-bold text-red-500 mx-4"
                                             >
                                                 <img
-                                                    className="h-8 w-8 rounded-full mr-2"
+                                                    className="img-team rounded-full mr-2"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${killer[1]}.png`}
                                                     alt={`img champion ${killer[1]}`}
                                                 />
                                                 <p>
-                                                    {killer[0]} ({killer[1]})
+                                                    {killer[0]} <span className="summ-name">({killer[1]})</span>
                                                 </p>
                                             </div>
                                         );
@@ -95,15 +95,15 @@ function StatMatch(props) {
                                         return (
                                             <div
                                                 key={key}
-                                                className="flex font-bold text-blue-500 mx-4"
+                                                className="flex xs:flex-col font-bold text-blue-500 mx-4"
                                             >
                                                 <img
-                                                    className="h-8 w-8 rounded-full mr-2"
+                                                    className="img-team rounded-full mr-2"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${killer[1]}.png`}
                                                     alt={`img champion ${killer[1]}`}
                                                 />
                                                 <p>
-                                                    {killer[0]} ({killer[1]})
+                                                    {killer[0]} <span className="summ-name">({killer[1]})</span>
                                                 </p>
                                             </div>
                                         );
@@ -121,15 +121,15 @@ function StatMatch(props) {
                                         return (
                                             <div
                                                 key={key}
-                                                className="flex font-bold text-red-500 ml-4"
+                                                className="flex xs:flex-col font-bold text-red-500 ml-4"
                                             >
                                                 <img
-                                                    className="h-8 w-8 rounded-full mr-2"
+                                                    className="img-team rounded-full mr-2"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${victim[1]}.png`}
                                                     alt={`img champion ${victim[1]}`}
                                                 />
                                                 <p>
-                                                    {victim[0]} ({victim[1]})
+                                                    {victim[0]} <span className="summ-name">({victim[1]})</span>
                                                 </p>
                                             </div>
                                         );
@@ -137,15 +137,15 @@ function StatMatch(props) {
                                         return (
                                             <div
                                                 key={key}
-                                                className="flex font-bold text-blue-500 ml-4"
+                                                className="flex xs:flex-col font-bold text-blue-500 ml-4"
                                             >
                                                 <img
-                                                    className="h-8 w-8 rounded-full mr-2"
+                                                    className="img-team rounded-full mr-2"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${victim[1]}.png`}
                                                     alt={`img champion ${victim[1]}`}
                                                 />
                                                 <p>
-                                                    {victim[0]} ({victim[1]})
+                                                    {victim[0]} <span className="summ-name">({victim[1]})</span>
                                                 </p>
                                             </div>
                                         );
@@ -161,7 +161,7 @@ function StatMatch(props) {
                             key={key}
                             className="flex items-center mb-4 last:mb-0"
                         >
-                            <p className="text-gray-500 font-bold text-sm">
+                            <p className="event-timer text-gray-500 font-bold">
                                 {addO(
                                     new Date(eventEvent.timestamp).getMinutes()
                                 ) +
@@ -178,15 +178,15 @@ function StatMatch(props) {
                                         return (
                                             <div
                                                 key={key}
-                                                className="flex font-bold text-red-500 mx-4"
+                                                className="flex xs:flex-col font-bold text-red-500 mx-4"
                                             >
                                                 <img
-                                                    className="h-8 w-8 rounded-full mr-2"
+                                                    className="img-team rounded-full mr-2"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${killer[1]}.png`}
                                                     alt={`img champion ${killer[1]}`}
                                                 />
                                                 <p>
-                                                    {killer[0]} ({killer[1]})
+                                                    {killer[0]} <span className="summ-name">({killer[1]})</span>
                                                 </p>
                                             </div>
                                         );
@@ -195,15 +195,15 @@ function StatMatch(props) {
                                         return (
                                             <div
                                                 key={key}
-                                                className="flex font-bold text-blue-500 mx-4"
+                                                className="flex xs:flex-col font-bold text-blue-500 mx-4"
                                             >
                                                 <img
-                                                    className="h-8 w-8 rounded-full mr-2"
+                                                    className="img-team rounded-full mr-2"
                                                     src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${killer[1]}.png`}
                                                     alt={`img champion ${killer[1]}`}
                                                 />
                                                 <p>
-                                                    {killer[0]} ({killer[1]})
+                                                    {killer[0]} <span className="summ-name">({killer[1]})</span>
                                                 </p>
                                             </div>
                                         );
@@ -225,7 +225,7 @@ function StatMatch(props) {
                             key={key}
                             className="flex items-center mb-4 last:mb-0"
                         >
-                            <p className="text-gray-500 font-bold text-sm">
+                            <p className="event-timer text-gray-500 font-bold">
                                 {addO(
                                     new Date(eventEvent.timestamp).getMinutes()
                                 ) +
@@ -238,9 +238,14 @@ function StatMatch(props) {
                             </p>
                             <div
                                 key={key}
-                                className="flex font-bold text-blue-500 mx-4"
+                                className="flex xs:flex-col font-bold text-gray-300 mx-4"
                             >
-                                <p>minion :</p>
+                                <img
+                                    className="img-team rounded-full mr-2"
+                                    src={`https://pbs.twimg.com/media/EpTrIV7XIAI4Kjj.jpg`}
+                                    alt={`img minions`}
+                                />
+                                <p>Minions</p>
                             </div>
                             <img
                                 className="w-[24px]"

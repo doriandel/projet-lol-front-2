@@ -67,7 +67,7 @@ function MatchTimeline() {
                                 RENDER 
         ****************************************************************/
     return (
-        <div className="h-screen p-6 bg-gray-800 box-border flex flex-col gap-4">
+        <div className="container-main-match p-6 bg-gray-800 box-border flex flex-col gap-4">
             <div className="container-crb flex items-center gap-2">
                 <a
                     className="btn bg-gray-900 rounded-lg flex justify-center cursor-pointer"
@@ -103,7 +103,7 @@ function MatchTimeline() {
             <h2 className="text-2xl font-bold text-gray-200 w-full">
                 {summonerName}'s Matches
             </h2>
-            <div className="flex w-full p-8 rounded-xl bg-gray-900">
+            <div className="container-map-stats flex w-full rounded-xl bg-gray-900">
                 <div>
                     <Map
                         gameTime={timeEnd}
@@ -117,8 +117,8 @@ function MatchTimeline() {
                     </div>
                 </div>
 
-                <div className="flex w-full pl-8 gap-4">
-                    <div className="container-logs overflow-y-scroll p-4 bg-gray-800 rounded-xl w-full h-[730px]">
+                <div className="container-left flex w-full">
+                    <div className="container-logs overflow-y-scroll p-4 bg-gray-800 rounded-xl">
                         <ul>
                             <StatMatch
                                 frames={frames}

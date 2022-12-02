@@ -5,10 +5,10 @@ function team(props) {
   const { team1, team2 } = props;
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex flex-col px-2 gap-4">
-        <h2 className="font-bold text-2xl text-blue-500">Team Blue</h2>
-        <ol className="flex-col p-4 bg-gray-800 rounded-xl space-y-2">
+    <div className="container-main-teams flex">
+      <div className="container-teams-map flex flex-col">
+        <h2 className="font-bold text-blue-500">Team Blue</h2>
+        <ol className="container-names flex-col p-4 bg-gray-800 rounded-xl space-y-2">
           {team1 !== null ? (
             team1.map((participant) => {
               return (
@@ -16,14 +16,14 @@ function team(props) {
                   className="flex space-x-2 items-center justify-start"
                   key={participant[2]}
                 >
-                  <div className="flex-shrink-0 ml-2 w-max">
+                  <div className="flex-shrink-0 w-max">
                     <img
-                      className="h-8 w-8 rounded-full"
+                      className="img-team rounded-full"
                       src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${participant[1]}.png`}
                       alt="img champion"
                     />
                   </div>
-                  <p className="text-xl text-blue-500 font-medium">
+                  <p className="text-blue-500 font-medium">
                     {participant[0]}
                   </p>
                 </li>
@@ -34,8 +34,8 @@ function team(props) {
           )}
         </ol>
       </div>
-      <div className="flex flex-col px-2 gap-4">
-        <h2 className="font-bold text-2xl text-red-500">Team Red</h2>
+      <div className="container-teams-map flex flex-col">
+        <h2 className="font-bold text-red-500">Team Red</h2>
         <ol className="flex-col p-4 bg-gray-800 rounded-xl space-y-2">
           {team2 !== null ? (
             team2.map((participant) => {
@@ -44,14 +44,14 @@ function team(props) {
                   className="flex space-x-2 items-center justify-start"
                   key={participant[2]}
                 >
-                  <div className="flex-shrink-0 ml-2 w-max">
+                  <div className="flex-shrink-0 w-max">
                     <img
-                      className="h-8 w-8 rounded-full"
+                      className="img-team rounded-full"
                       src={`https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/${participant[1]}.png`}
                       alt="img champion"
                     />
                   </div>
-                  <p className="text-xl text-red-500 font-medium">
+                  <p className="text-red-500 font-medium">
                     {participant[0]}
                   </p>
                 </li>

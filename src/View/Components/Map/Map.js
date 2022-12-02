@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Controle from "../Controle/Controle";
-// import "./map.css";
+import "./map.css";
 
 function Map(props) {
     const { gameTime, frames, team1, team2, start } = props;
@@ -121,12 +121,12 @@ function Map(props) {
             });
     }, [frames]);
     return (
-        <div className="flex flex-col w-[600px]">
-            <div className="relative w-[600px] h-[600px]">
-                <div className="absolute z-1 bg-[url(http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png)] bg-cover w-[600px] h-[600px] rounded-2xl"></div>
+        <div className="container-main flex flex-col">
+            <div className="container-canvas relative">
+                <div className="bg-canvas absolute z-1 bg-[url(http://ddragon.leagueoflegends.com/cdn/6.8.1/img/map/map11.png)] bg-cover rounded-2xl"></div>
                 <canvas
                     id="canvas"
-                    className={`absolute z-2 w-[600px] h-[600px] -rotate-90`}
+                    className={`absolute z-2 -rotate-90`}
                     ref={canvasRef}
                     height={16000}
                     width={16000}
